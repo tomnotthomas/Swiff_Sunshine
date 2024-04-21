@@ -22,6 +22,7 @@
 #include "upnp.h"
 #include "version.h"
 #include "video.h"
+#include "ssmnbackendapi.h"
 
 extern "C" {
 #include <rs.h>
@@ -314,6 +315,11 @@ main(int argc, char *argv[]) {
   }
 #endif
 
+  ssmn::SsmnBackendApi* ssmnBackend = ssmn::SsmnBackendApi::instance();
+  ssmnBackend->setRemoteAddress("http://127.0.0.1/ssmn_backend/index.php", 80);
+  ssmnBackend->setLocalAddress("127.0.0.1");
+  ssmnBackend->remoteRegister();
+
   rtsp_stream::rtpThread();
 
   httpThread.join();
@@ -335,5 +341,6 @@ main(int argc, char *argv[]) {
   }
 #endif
 
+  ssmnBackend->remoteUnregister();
   return lifetime::desired_exit_code;
 }

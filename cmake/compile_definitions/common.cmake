@@ -110,6 +110,8 @@ set(SUNSHINE_TARGET_FILES
         "${CMAKE_SOURCE_DIR}/src/stat_trackers.cpp"
         "${CMAKE_SOURCE_DIR}/src/curlrequest.h"
         "${CMAKE_SOURCE_DIR}/src/curlrequest.cpp"
+        "${CMAKE_SOURCE_DIR}/src/ssmnbackendapi.h"
+        "${CMAKE_SOURCE_DIR}/src/ssmnbackendapi.cpp"
         ${PLATFORM_TARGET_FILES})
 
 if(NOT SUNSHINE_ASSETS_DIR_DEF)
