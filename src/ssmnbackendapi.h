@@ -27,7 +27,7 @@ namespace ssmn {
               mRemotePort = port;
             }
 
-            void setLocalAddress(const std::string& address) {
+            void setAddress(const std::string& address) {
                 mLocalAddress = address;
             }
 

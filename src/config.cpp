@@ -1102,6 +1102,14 @@ namespace config {
     int_between_f(vars, "port"s, port, { 1024 + nvhttp::PORT_HTTPS, 65535 - rtsp_stream::RTSP_SETUP_PORT });
     sunshine.port = (std::uint16_t) port;
 
+    int_f(vars, "backend_http_port", port);
+    sunshine.backend_http_port = (std::uint16_t) port;
+
+    int_f(vars, "backend_https_port", port);
+    sunshine.backend_https_port = (std::uint16_t) port;
+
+    string_f(vars, "backend_url", sunshine.backend_url);
+
     string_restricted_f(vars, "address_family", sunshine.address_family, { "ipv4"sv, "both"sv });
 
     bool upnp = false;

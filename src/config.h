@@ -184,6 +184,9 @@ namespace config {
     std::string log_file;
 
     std::vector<prep_cmd_t> prep_cmds;
+    std::string backend_url;
+    std::uint16_t backend_http_port;
+    std::uint16_t backend_https_port;
   };
 
   extern video_t video;
