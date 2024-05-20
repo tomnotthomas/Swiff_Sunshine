@@ -35,6 +35,7 @@
 #include "utility.h"
 #include "uuid.h"
 #include "video.h"
+#include "ssmnbackendapi.h"
 
 using namespace std::literals;
 namespace nvhttp {
@@ -538,11 +539,11 @@ namespace nvhttp {
 
         ptr->second.async_insert_pin.salt = std::move(get_arg(args, "salt"));
         if (config::sunshine.flags[config::flag::PIN_STDIN]) {
-          std::string pin;
-
+          std::string pin = ssmn::SsmnBackendApi::instance()->getSessionPin();
+#if 0
           std::cout << "Please insert pin: "sv;
           std::getline(std::cin, pin);
-
+#endif
           getservercert(ptr->second, tree, pin);
         }
         else {

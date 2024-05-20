@@ -3,16 +3,17 @@
 
 #include <string>
 #include <cstdint>
+#include <list>
 #include <map>
 
 namespace ssmn {
     class SsmnBackendApi {
         public:
             static constexpr const char* kApiServerList = "/api/server_list";
-            static constexpr const char *kApiSessions = "/api/sessions";
+            static constexpr const char *kApiSetPin = "/api/pin";
             static constexpr const char *kApiRegister = "/api/register";
             static constexpr const char *kApiUnRegister = "/api/unregister";
-            static constexpr const char *kApiValidateSessionId = "/api/validate_session";
+            static constexpr const char *kApiGetPin = "/api/get_pin";
 
             using arg_map = std::map<std::string, std::string>;
 
@@ -27,7 +28,7 @@ namespace ssmn {
               mRemotePort = port;
             }
 
-            void setAddress(const std::string& address) {
+            void setLocalAddress(const std::string& address) {
                 mLocalAddress = address;
             }
 
@@ -37,9 +38,9 @@ namespace ssmn {
 
             void remoteRegister();
             void remoteUnregister();
-            void serverList();
-            std::string getSessionId();
-            bool validateSessionId(const std::string& session_id);
+            std::list<std::string> getServerList();
+            bool setSessionPin(const std::string& server_name, const std::string& pin);
+            std::string getSessionPin(const std::string& server_name = "");
         private:
             explicit SsmnBackendApi();
             ~SsmnBackendApi();

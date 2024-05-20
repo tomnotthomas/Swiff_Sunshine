@@ -318,7 +318,7 @@ main(int argc, char *argv[]) {
   ssmn::SsmnBackendApi* ssmnBackend = ssmn::SsmnBackendApi::instance();
   ssmnBackend->setComputerName(boost::asio::ip::host_name());
   ssmnBackend->setRemoteAddress(config::sunshine.backend_url, config::sunshine.backend_http_port);
-  ssmnBackend->setAddress(config::nvhttp.external_ip);
+  ssmnBackend->setLocalAddress(config::nvhttp.external_ip);
   ssmnBackend->remoteRegister();
 
   rtsp_stream::rtpThread();
